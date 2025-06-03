@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.30.0" theme-name="Stellar" theme-version="1.30.0">
-  <meta name="robots" content="none">
+  
   <meta name="generator" content="Hexo 7.3.0">
   <meta http-equiv='x-dns-prefetch-control' content='on' />
   
@@ -17,10 +17,16 @@
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
   <meta name="theme-color" content="#f9fafb">
   
-  <title>ZQiのwebsite</title>
+  <title>STM32+FreeRTOS(1)环境搭建 - ZQiのwebsite</title>
 
   
-  <meta name="description" content="">
+  <meta name="description" content="STM32F103环境搭建编译arm-none-eabi-gcc
+项目构建CMake
+项目代码
+启动文件
+
+.\Keil_v5\ARM\Pack\Keil\STM32F1xx_DFP\2.4.1\Device\Source\ARM
+Keil对应板子的固件库中，startup_stm32f10x...">
   
   
 
@@ -38,7 +44,7 @@
 </head>
 <body>
 
-<div class="l_body index tech" id="start" layout="404" ><aside class="l_left"><div class="leftbar-container">
+<div class="l_body content tech" id="start" layout="post" ><aside class="l_left"><div class="leftbar-container">
 
 
 <header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="undefined" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">ZQiのwebsite</div></a></div></header>
@@ -50,28 +56,144 @@
 <nav class="menu dis-select"></nav>
 </div>
 <div class="widgets">
+
+
 <widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">Recent Update</span></div><div class="widget-body fs14"><a class="item title" href="/2025/06/03/STM32-FreeRTOS/"><span class="title">STM32+FreeRTOS(1)环境搭建</span></a><a class="item title" href="/2025/06/03/Markdown/"><span class="title">Markdown</span></a><a class="item title" href="/2025/05/30/MQTT/"><span class="title">MQTT</span></a><a class="item title" href="/2025/05/29/link/"><span class="title">link</span></a><a class="item title" href="/2025/05/29/test-blog-website/"><span class="title">Hexo教程</span></a></div></widget>
-
-
 </div>
 
 </div></aside><div class="l_main" id="main">
 
 
 
-<article class='md-text error-page'>
-  <h1><img id='error' src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/404/1c830bfcd517d.svg' alt='404'></h1>
-  <p class='what'>
-    <strong>
-      Page Not Found
-    </strong>
-  </p>
-  <p class='why'>
-    The address may be entered incorrectly or the address has been deleted.
-  </p>
-  <br><br>
-  <a class='button' id='back' href="/">Back to Home</a>
+
+
+<div class="article banner top">
+  <div class="content">
+    <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">Home</a>
+<span class="sep"></span><a class="cap breadcrumb" href="/">Blog</a></div>
+<div class="flex-row" id="post-meta"><span class="text created">Posted on: <time datetime="2025-06-03T08:59:28.000Z">2025-06-03</time></span><span class="sep updated"></span><span class="text updated">Updated on: <time datetime="2025-06-03T13:59:32.584Z">2025-06-03</time></span></div></div></div>
+    
+    <div class="bottom only-title">
+      
+      <div class="text-area">
+        <h1 class="text title"><span>STM32+FreeRTOS(1)环境搭建</span></h1>
+        
+      </div>
+    </div>
+    
+  </div>
+  </div><article class="md-text content"><h1 id="STM32F103"><a href="#STM32F103" class="headerlink" title="STM32F103"></a>STM32F103</h1><h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><h3 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h3><p><em><strong>arm-none-eabi-gcc</strong></em></p>
+<h3 id="项目构建"><a href="#项目构建" class="headerlink" title="项目构建"></a>项目构建</h3><p><em><strong>CMake</strong></em></p>
+<h3 id="项目代码"><a href="#项目代码" class="headerlink" title="项目代码"></a>项目代码</h3><ul>
+<li><em><strong>启动文件</strong></em></li>
+</ul>
+<p>.\Keil_v5\ARM\Pack\Keil\STM32F1xx_DFP\2.4.1\Device\Source\ARM</p>
+<p>Keil对应板子的固件库中，startup_stm32f10x_hd.S<strong>专用于keil的汇编启动代码</strong>，如果用gcc-arm编译需要找gcc-arm的汇编文件</p>
+<p>以下是keil汇编启动代码：</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/2025/05/29/link/-FreeRTOS/image-20250603211305196.png" alt="image-20250603211305196"></p>
+<ol>
+<li>配置向量表</li>
+</ol>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/2025/05/29/link/-FreeRTOS/image-20250603211344525.png" alt="image-20250603211344525"></p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/2025/05/29/link/-FreeRTOS/image-20250603211404330.png" alt="image-20250603211404330"></p>
+<ol start="2">
+<li>初始化堆栈</li>
+</ol>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/2025/05/29/link/-FreeRTOS/image-20250603211626041.png" alt="image-20250603211626041"></p>
+<ol start="3">
+<li>初始化时钟、跳转到main</li>
+</ol>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/2025/05/29/link/-FreeRTOS/image-20250603211837551.png" alt="image-20250603211837551"></p>
+<ul>
+<li>链接脚本</li>
+</ul>
+<p>STM32F103VETX_FLASH.ld是一个链接脚本文件，它告诉编译器相关的编译后的<strong>可执行代码，内存变量，中断向量</strong>，链接在哪个存储区。</p>
+<p>CubeMax可以生成；网上也有</p>
+<ul>
+<li>固件库STM32F10x_FWLib</li>
+</ul>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/2025/05/29/link/-FreeRTOS/image-20250603213750794.png" alt="image-20250603213750794"></p>
+<ul>
+<li>系统文件</li>
+</ul>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/2025/05/29/link/-FreeRTOS/image-20250603214051093.png" alt="image-20250603214051093"></p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/2025/05/29/link/-FreeRTOS/image-20250603214239763.png" alt="image-20250603214239763"></p>
+<ul>
+<li>调试</li>
+</ul>
+<p><em><strong>openocd</strong></em></p>
+<ol>
+<li>架构</li>
+</ol>
+<p>OpenOCD 本身是一个“<strong>服务器</strong>”，启动后监听端口（通常是 3333）等待客户端（如 GDB）连接。</p>
+<p>其组成包括：</p>
+<table>
+<thead>
+<tr>
+<th>组件</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Interface 配置</strong></td>
+<td align="center">定义与电脑连接的调试器设备（如 ST-Link、J-Link）</td>
+</tr>
+<tr>
+<td><strong>Target 配置</strong></td>
+<td align="center">定义目标芯片的信息和内存布局（如 STM32F103）</td>
+</tr>
+<tr>
+<td><strong>GDB 连接端口</strong></td>
+<td align="center">默认 3333，供调试器如 <code>arm-none-eabi-gdb</code> 连接</td>
+</tr>
+<tr>
+<td><strong>Telnet 端口</strong></td>
+<td align="center">默认 4444，可手动控制 OpenOCD 会话</td>
+</tr>
+</tbody></table>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;configurations&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;cwd&quot;</span><span class="punctuation">:</span> <span class="string">&quot;$&#123;workspaceRoot&#125;&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;executable&quot;</span><span class="punctuation">:</span> <span class="string">&quot;$&#123;cwd&#125;/build/MQTTPrj.elf&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;cmsis-dap&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;request&quot;</span><span class="punctuation">:</span> <span class="string">&quot;launch&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;cortex-debug&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;svdFile&quot;</span><span class="punctuation">:</span> <span class="string">&quot;.pack/Keil/STM32F1xx_DFP.2.4.1/SVD/STM32F103xx.svd&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;servertype&quot;</span><span class="punctuation">:</span> <span class="string">&quot;openocd&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;configFiles&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="string">&quot;interface/cmsis-dap.cfg&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;target/stm32f1x.cfg&quot;</span></span><br><span class="line">    <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;searchDir&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;runToEntryPoint&quot;</span><span class="punctuation">:</span> <span class="string">&quot;main&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;showDevDebugOutput&quot;</span><span class="punctuation">:</span> <span class="string">&quot;none&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>依赖文件</li>
+</ol>
+<p>OpenOCD 运行时需要两个配置文件（可以通过 <code>-f</code> 参数加载）：</p>
+<p>a. 接口配置文件（interface.cfg）</p>
+<p>告诉 OpenOCD 使用哪种硬件调试器（如 ST-Link、J-Link）：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-f interface/stlink.cfg</span><br></pre></td></tr></table></figure>
+
+<p>b. 目标配置文件（target.cfg）</p>
+<p>告诉 OpenOCD 连接的是哪种 MCU 芯片（如 STM32F1、STM32F4）：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-f target/stm32f1x.cfg</span><br></pre></td></tr></table></figure>
+
+<p>c. SVD 文件（可选，用于 IDE)</p>
+<p><strong>SVD（System View Description）</strong> 是 ARM CMSIS 标准的芯片寄存器描述文件，<strong>OpenOCD 本身不依赖 SVD 文件</strong>，但调试器（如 VS Code + Cortex-Debug）可能会用到。</p>
+<ol start="3">
+<li>刷写</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> ./build</span><br><span class="line"><span class="built_in">echo</span> %<span class="built_in">cd</span>%</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span> HEXName=<span class="string">&quot;MQTTPrj&quot;</span></span><br><span class="line"></span><br><span class="line">openocd -f interface/cmsis-dap.cfg -f target/stm32f1x.cfg -c <span class="string">&quot;program %HEXName%.hex verify reset exit&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> errorlevel 1 (</span><br><span class="line">    <span class="built_in">echo</span> ****flash failed!****</span><br><span class="line">) <span class="keyword">else</span> (</span><br><span class="line">    <span class="built_in">echo</span> ****flash success!****</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>环境配置问题</li>
+</ul>
+<ol>
+<li>gcc编译需要修改core_cm3.c文件</li>
+<li>……</li>
+</ol>
+<hr>
+
+<div class="article-footer fs14">
+    <section id="license">
+      <div class="header"><span>License</span></div>
+      <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div>
+    </section>
+    </div>
 </article>
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">Newer</div><a href="/2025/06/03/Markdown/">Markdown</a></div><div class="item" id="next"><div class="note">Older</div><a href="/2025/05/30/MQTT/">MQTT</a></div></section></div>
+
+
 
 
 
@@ -79,7 +201,14 @@
 <footer class="page-footer footnote"><hr><div class="text"><p>本站由 <a href="/">ZQi</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.30.0">Stellar 1.30.0</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
 </div></footer>
 <div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
-</aside><div class='float-panel blur'>
+<div class="widgets">
+
+
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">On This Page</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#STM32F103"><span class="toc-text">STM32F103</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="toc-text">环境搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E8%AF%91"><span class="toc-text">编译</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E6%9E%84%E5%BB%BA"><span class="toc-text">项目构建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E4%BB%A3%E7%A0%81"><span class="toc-text">项目代码</span></a></li></ol></li></ol></li></ol></div><div class="widget-footer">
+
+<a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12c0-4.714 0-7.071 1.464-8.536C4.93 2 7.286 2 12 2c4.714 0 7.071 0 8.535 1.464C22 4.93 22 7.286 22 12c0 4.714 0 7.071-1.465 8.535C19.072 22 16.714 22 12 22s-7.071 0-8.536-1.465C2 19.072 2 16.714 2 12Z"/><path stroke-linecap="round" stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/></g></svg><span>Scroll to Top</span></a></div></widget>
+</div></aside><div class='float-panel blur'>
   <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
   </button>
