@@ -17,10 +17,27 @@
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
   <meta name="theme-color" content="#f9fafb">
   
-  <title>ZQiのwebsite</title>
+  <title>Make&CMake - ZQiのwebsite</title>
 
   
-  <meta name="description" content="">
+  <meta name="description" content="Make编译
+-o ：指定输出文件名。
+
+-c：只编译，不链接。
+
+-E：只预处理，不编译。
+
+-S：只编译，不汇编。
+
+-I ：指定头文件搜索路径。
+
+-L ：指定库文件搜索路径。
+
+-l ：指定链接的库文件。
+
+-g：生成调试信息。
+
+-O：优化代码，-O1、-O2、-O3表示不同级别的优...">
   
   
 
@@ -38,7 +55,7 @@
 </head>
 <body>
 
-<div class="l_body index tech" id="start" layout="undefined" ><aside class="l_left"><div class="leftbar-container">
+<div class="l_body content tech" id="start" layout="post" ><aside class="l_left"><div class="leftbar-container">
 
 
 <header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="undefined" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">ZQiのwebsite</div></a></div></header>
@@ -50,104 +67,120 @@
 <nav class="menu dis-select"></nav>
 </div>
 <div class="widgets">
+
+
 <widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">Recent Update</span></div><div class="widget-body fs14"><a class="item title" href="/2025/06/04/Make-CMake/"><span class="title">Make&CMake</span></a><a class="item title" href="/2025/06/03/Markdown/"><span class="title">Markdown</span></a><a class="item title" href="/2025/06/03/STM32-FreeRTOS/"><span class="title">STM32+FreeRTOS(1)环境搭建</span></a><a class="item title" href="/2025/06/03/STM32F103-FreeRTOS-2-%E9%A9%B1%E5%8A%A8/"><span class="title">STM32F103+FreeRTOS(2)驱动</span></a><a class="item title" href="/2025/05/30/MQTT/"><span class="title">MQTT</span></a><a class="item title" href="/2025/05/29/link/"><span class="title">link</span></a><a class="item title" href="/2025/05/29/test-blog-website/"><span class="title">Hexo教程</span></a></div></widget>
 </div>
 
 </div></aside><div class="l_main" id="main">
 
-<header class="header mobile-only"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="undefined" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">ZQiのwebsite</div></a></div></header>
 
 
 
 
-<div class="navbar top"><nav class="post"><a class="active" href="/">Recent</a><a href="/categories/">Categories</a><a href="/tags/">Tags</a><a href="/archives/">Archives</a></nav></div>
-<div class="post-list post"><a class="post-card post" href="/2025/06/04/Make-CMake/">
-<article class="md-text"><h2 class="post-title">Make&CMake</h2><div class="excerpt"><p>Make编译
--o ：指定输出文件名。
+<div class="article banner top">
+  <div class="content">
+    <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">Home</a>
+<span class="sep"></span><a class="cap breadcrumb" href="/">Blog</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/">构建工具</a></div>
+<div class="flex-row" id="post-meta"><span class="text created">Posted on: <time datetime="2025-06-04T13:03:56.000Z">2025-06-04</time></span><span class="sep updated"></span><span class="text updated">Updated on: <time datetime="2025-06-04T13:47:01.616Z">2025-06-04</time></span></div></div></div>
+    
+    <div class="bottom only-title">
+      
+      <div class="text-area">
+        <h1 class="text title"><span>Make&CMake</span></h1>
+        
+      </div>
+    </div>
+    
+  </div>
+  </div><article class="md-text content"><h1 id="Make"><a href="#Make" class="headerlink" title="Make"></a>Make</h1><h2 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h2><ul>
+<li><p>-o <file>：指定输出文件名。</p>
+</li>
+<li><p>-c：只编译，不链接。</p>
+</li>
+<li><p>-E：只预处理，不编译。</p>
+</li>
+<li><p>-S：只编译，不汇编。</p>
+</li>
+<li><p>-I <dir>：指定头文件搜索路径。</p>
+</li>
+<li><p>-L <dir>：指定库文件搜索路径。</p>
+</li>
+<li><p>-l <lib>：指定链接的库文件。</p>
+</li>
+<li><p>-g：生成调试信息。</p>
+</li>
+<li><p>-O：优化代码，-O1、-O2、-O3表示不同级别的优化</p>
+</li>
+<li><p>-shared</p>
+</li>
+</ul>
+<p><code>gcc -shared -o libmylib.so file1.o file2.o</code></p>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 规则格式</span></span><br><span class="line">目标…... : 依赖文件集合……</span><br><span class="line">	命令 1</span><br><span class="line">	命令 2</span><br><span class="line">	……</span><br><span class="line">main : main.o input.o calcu.o</span><br><span class="line">	gcc -o main main.o input.o calcu.o</span><br><span class="line">	</span><br><span class="line"><span class="comment"># 赋值符号</span></span><br><span class="line"><span class="comment"># 1、&quot;=&quot; 变量的真实值取决于它所引用的变量的最后一次有效值</span></span><br><span class="line"><span class="comment"># 2、&quot;:=&quot; 不会使用后面定义的变量，只能使用前面已经定义好的</span></span><br><span class="line"><span class="comment"># 3、&quot;?=&quot; 如果变量前面赋过值，就用前值；否则用当前值</span></span><br><span class="line"><span class="comment"># 4、&quot;+=&quot; 追加</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 通配符</span></span><br><span class="line"><span class="comment"># 1、&quot;%&quot; 长度任意的非空字符串</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 伪目标 将clean声明为伪目标，防止目录中有同名目标的文件，clean后面的命令可能不能正确执行</span></span><br><span class="line">.PHONY : clean</span><br><span class="line">clean</span><br><span class="line"> rm *.o</span><br><span class="line"> rm main</span><br><span class="line"> </span><br><span class="line"> <span class="comment"># 函数</span></span><br><span class="line"> <span class="variable">$(<span class="built_in">subst</span> &lt;from&gt;,&lt;to&gt;,&lt;text&gt;)</span> <span class="comment"># 字符替换</span></span><br><span class="line"> <span class="variable">$(<span class="built_in">subst</span> zzk,ZZK,my name is zzk)</span></span><br><span class="line"> </span><br><span class="line"> <span class="variable">$(<span class="built_in">patsubst</span> &lt;pattern&gt;,&lt;replacement&gt;,&lt;text&gt;)</span> <span class="comment"># 模式字符串替换</span></span><br><span class="line"> <span class="variable">$(<span class="built_in">patsubst</span> %.c,%.o,a.c b.c c.c)</span></span><br><span class="line"> </span><br><span class="line"> <span class="variable">$(<span class="built_in">dir</span> &lt;names…&gt;)</span> <span class="comment"># 目录</span></span><br><span class="line"> </span><br><span class="line"> <span class="variable">$(<span class="built_in">notdir</span> &lt;names…&gt;)</span><span class="comment"># 去除文件中目录部分</span></span><br><span class="line"> </span><br><span class="line"> <span class="variable">$(<span class="built_in">foreach</span> &lt;var&gt;, &lt;list&gt;,&lt;text&gt;)</span><span class="comment"># 循环</span></span><br><span class="line"> </span><br><span class="line"> <span class="variable">$(<span class="built_in">wildcard</span> PATTERN…)</span><span class="comment"># 通配符</span></span><br></pre></td></tr></table></figure>
 
--c：只编译，不链接。
+<table>
+<thead>
+<tr>
+<th>自动化变量</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$@</td>
+<td align="left">规则中的目标集合，在模式规则中，如果有多个目标的话，“$@”表示匹配模式中定义的目标集合。</td>
+</tr>
+<tr>
+<td>$%</td>
+<td align="left">当目标是函数库的时候表示规则中的目标成员名，如果目标不是函数库文件，那么其值为空。</td>
+</tr>
+<tr>
+<td>$&lt;</td>
+<td align="left">依赖文件集合中的第一个文件，如果依赖文件是以模式(即“%” )定义的，那么“$&lt;”就是符合模式的一系列的文件集合。</td>
+</tr>
+<tr>
+<td>$?</td>
+<td align="left">所有比目标新的依赖目标集合，以空格分开。</td>
+</tr>
+<tr>
+<td>$^</td>
+<td align="left">所有依赖文件的集合，使用空格分开，如果在依赖文件中有多个重复的文件， “$^”会去除重复的依赖文件，值保留一份。</td>
+</tr>
+<tr>
+<td>$+</td>
+<td align="left">和“$^”类似，但是当依赖文件存在重复的话不会去除重复的依赖文件。</td>
+</tr>
+<tr>
+<td>$*</td>
+<td align="left">这个变量表示目标模式中”%”及其之前的部分，如果目标是 test&#x2F;a.test.c，目标模式为 a.%.c，那么“$*”就是 test&#x2F;a.test。</td>
+</tr>
+</tbody></table>
 
--E：只预处理，不编译。
-
--S：只编译，不汇编。
-
--I ：指定头文件搜索路径。
-
--L ：指定库文件搜索路径。
-
--l ：指定链接的库文件。
-
--g：生成调试信息。
-
--O：优化...</p></div><div class="meta cap"><span class="cap" id="post-meta"><svg style="margin-bottom:2px" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M6.94 2c.416 0 .753.324.753.724v1.46c.668-.012 1.417-.012 2.26-.012h4.015c.842 0 1.591 0 2.259.013v-1.46c0-.4.337-.725.753-.725s.753.324.753.724V4.25c1.445.111 2.394.384 3.09 1.055c.698.67.982 1.582 1.097 2.972L22 9H2v-.724c.116-1.39.4-2.302 1.097-2.972c.697-.67 1.645-.944 3.09-1.055V2.724c0-.4.337-.724.753-.724"/><path fill="currentColor" d="M22 14v-2c0-.839-.004-2.335-.017-3H2.01c-.013.665-.01 2.161-.01 3v2c0 3.771 0 5.657 1.172 6.828C4.343 22 6.228 22 10 22h4c3.77 0 5.656 0 6.828-1.172C22 19.658 22 17.772 22 14" opacity=".5"/><path fill="currentColor" d="M18 17a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m-5 4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m-5 4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0"/></svg><time datetime="2025-06-04T13:03:56.000Z">2025-06-04</time></span><span class="cap breadcrumb"><svg style="margin-bottom:1px" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M2 6.95c0-.883 0-1.324.07-1.692A4 4 0 0 1 5.257 2.07C5.626 2 6.068 2 6.95 2c.386 0 .58 0 .766.017a4 4 0 0 1 2.18.904c.144.119.28.255.554.529L11 4c.816.816 1.224 1.224 1.712 1.495a4 4 0 0 0 .848.352C14.098 6 14.675 6 15.828 6h.374c2.632 0 3.949 0 4.804.77c.079.07.154.145.224.224c.77.855.77 2.172.77 4.804V14c0 3.771 0 5.657-1.172 6.828C19.657 22 17.771 22 14 22h-4c-3.771 0-5.657 0-6.828-1.172C2 19.657 2 17.771 2 14z" opacity=".5"/><path fill="currentColor" d="M20 6.238c0-.298-.005-.475-.025-.63a3 3 0 0 0-2.583-2.582C17.197 3 16.965 3 16.5 3H9.988c.116.104.247.234.462.45L11 4c.816.816 1.224 1.224 1.712 1.495a4 4 0 0 0 .849.352C14.098 6 14.675 6 15.829 6h.373c1.78 0 2.957 0 3.798.238"/><path fill="currentColor" fill-rule="evenodd" d="M12.25 10a.75.75 0 0 1 .75-.75h5a.75.75 0 0 1 0 1.5h-5a.75.75 0 0 1-.75-.75" clip-rule="evenodd"/></svg><span>构建工具</span></span></div></article>
-</a><a class="post-card post" href="/2025/06/03/STM32F103-FreeRTOS-2-%E9%A9%B1%E5%8A%A8/">
-<article class="md-text"><h2 class="post-title">STM32F103+FreeRTOS(2)驱动</h2><div class="excerpt"><p></p></div><div class="meta cap"><span class="cap" id="post-meta"><svg style="margin-bottom:2px" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M6.94 2c.416 0 .753.324.753.724v1.46c.668-.012 1.417-.012 2.26-.012h4.015c.842 0 1.591 0 2.259.013v-1.46c0-.4.337-.725.753-.725s.753.324.753.724V4.25c1.445.111 2.394.384 3.09 1.055c.698.67.982 1.582 1.097 2.972L22 9H2v-.724c.116-1.39.4-2.302 1.097-2.972c.697-.67 1.645-.944 3.09-1.055V2.724c0-.4.337-.724.753-.724"/><path fill="currentColor" d="M22 14v-2c0-.839-.004-2.335-.017-3H2.01c-.013.665-.01 2.161-.01 3v2c0 3.771 0 5.657 1.172 6.828C4.343 22 6.228 22 10 22h4c3.77 0 5.656 0 6.828-1.172C22 19.658 22 17.772 22 14" opacity=".5"/><path fill="currentColor" d="M18 17a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m-5 4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m-5 4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0"/></svg><time datetime="2025-06-03T14:02:35.000Z">2025-06-03</time></span></div></article>
-</a><a class="post-card post" href="/2025/06/03/Markdown/">
-<article class="md-text"><h2 class="post-title">Markdown</h2><div class="excerpt"><p>Markdown语法
-颜色
-
-12&lt;font color=&quot;red&quot;&gt;这段文字是红色的！&lt;/font&gt;&lt;p style=&quot;color:blue&quot;&gt;这段文字是蓝色的。&lt;/...</p></div><div class="meta cap"><span class="cap" id="post-meta"><svg style="margin-bottom:2px" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M6.94 2c.416 0 .753.324.753.724v1.46c.668-.012 1.417-.012 2.26-.012h4.015c.842 0 1.591 0 2.259.013v-1.46c0-.4.337-.725.753-.725s.753.324.753.724V4.25c1.445.111 2.394.384 3.09 1.055c.698.67.982 1.582 1.097 2.972L22 9H2v-.724c.116-1.39.4-2.302 1.097-2.972c.697-.67 1.645-.944 3.09-1.055V2.724c0-.4.337-.724.753-.724"/><path fill="currentColor" d="M22 14v-2c0-.839-.004-2.335-.017-3H2.01c-.013.665-.01 2.161-.01 3v2c0 3.771 0 5.657 1.172 6.828C4.343 22 6.228 22 10 22h4c3.77 0 5.656 0 6.828-1.172C22 19.658 22 17.772 22 14" opacity=".5"/><path fill="currentColor" d="M18 17a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m-5 4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m-5 4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0"/></svg><time datetime="2025-06-03T13:29:20.000Z">2025-06-03</time></span></div></article>
-</a><a class="post-card post photo" href="/2025/06/03/STM32-FreeRTOS/">
-<div class="cover"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="./STM32-FreeRTOS/cover.jpg"/><div class="cover-info"style="color:红"position="top"><div class="cap">标题上方的小字</div><div class="title">大标题</div><div class="cap">标题下方的小字</div></div></div>
-</a><a class="post-card post" href="/2025/05/30/MQTT/">
-<article class="md-text"><div class="post-cover"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://source.unsplash.com/1280x640/?\MQTT\cover.jpg"/></div><h2 class="post-title">MQTT</h2><div class="excerpt"><p>MQTTtest
-CONNECT
-Keep Alive:1.5倍超时
-
-
-CONNACK
-
-PUBLISH
-QoS &#x3D;&#x3D; 0 -&gt; 报文标识符则无
-
-PUBACKQoS&#x3D;&#x3D;1
-
-
-PUBREC &amp;...</p></div><div class="meta cap"><span class="cap" id="post-meta"><svg style="margin-bottom:2px" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M6.94 2c.416 0 .753.324.753.724v1.46c.668-.012 1.417-.012 2.26-.012h4.015c.842 0 1.591 0 2.259.013v-1.46c0-.4.337-.725.753-.725s.753.324.753.724V4.25c1.445.111 2.394.384 3.09 1.055c.698.67.982 1.582 1.097 2.972L22 9H2v-.724c.116-1.39.4-2.302 1.097-2.972c.697-.67 1.645-.944 3.09-1.055V2.724c0-.4.337-.724.753-.724"/><path fill="currentColor" d="M22 14v-2c0-.839-.004-2.335-.017-3H2.01c-.013.665-.01 2.161-.01 3v2c0 3.771 0 5.657 1.172 6.828C4.343 22 6.228 22 10 22h4c3.77 0 5.656 0 6.828-1.172C22 19.658 22 17.772 22 14" opacity=".5"/><path fill="currentColor" d="M18 17a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m-5 4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m-5 4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0"/></svg><time datetime="2025-05-30T01:42:33.000Z">2025-05-30</time></span></div></article>
-</a><a class="post-card post" href="/2025/05/29/link/">
-<article class="md-text"><h2 class="post-title">link</h2><div class="excerpt"><p>链接全局符号表1$ readelf -s xxx/xxx.so
-
-
-
-
-
-全局偏移量表GOT在一个动态库中存在 2 个GOT表，分别用于重定位变量符号(section名称：.got)和函数符号( section 名称：.got.plt)。
-在一个动态...</p></div><div class="meta cap"><span class="cap" id="post-meta"><svg style="margin-bottom:2px" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M6.94 2c.416 0 .753.324.753.724v1.46c.668-.012 1.417-.012 2.26-.012h4.015c.842 0 1.591 0 2.259.013v-1.46c0-.4.337-.725.753-.725s.753.324.753.724V4.25c1.445.111 2.394.384 3.09 1.055c.698.67.982 1.582 1.097 2.972L22 9H2v-.724c.116-1.39.4-2.302 1.097-2.972c.697-.67 1.645-.944 3.09-1.055V2.724c0-.4.337-.724.753-.724"/><path fill="currentColor" d="M22 14v-2c0-.839-.004-2.335-.017-3H2.01c-.013.665-.01 2.161-.01 3v2c0 3.771 0 5.657 1.172 6.828C4.343 22 6.228 22 10 22h4c3.77 0 5.656 0 6.828-1.172C22 19.658 22 17.772 22 14" opacity=".5"/><path fill="currentColor" d="M18 17a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m-5 4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m-5 4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0"/></svg><time datetime="2025-05-29T13:56:31.000Z">2025-05-29</time></span><span class="cap breadcrumb"><svg style="margin-bottom:1px" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M2 6.95c0-.883 0-1.324.07-1.692A4 4 0 0 1 5.257 2.07C5.626 2 6.068 2 6.95 2c.386 0 .58 0 .766.017a4 4 0 0 1 2.18.904c.144.119.28.255.554.529L11 4c.816.816 1.224 1.224 1.712 1.495a4 4 0 0 0 .848.352C14.098 6 14.675 6 15.828 6h.374c2.632 0 3.949 0 4.804.77c.079.07.154.145.224.224c.77.855.77 2.172.77 4.804V14c0 3.771 0 5.657-1.172 6.828C19.657 22 17.771 22 14 22h-4c-3.771 0-5.657 0-6.828-1.172C2 19.657 2 17.771 2 14z" opacity=".5"/><path fill="currentColor" d="M20 6.238c0-.298-.005-.475-.025-.63a3 3 0 0 0-2.583-2.582C17.197 3 16.965 3 16.5 3H9.988c.116.104.247.234.462.45L11 4c.816.816 1.224 1.224 1.712 1.495a4 4 0 0 0 .849.352C14.098 6 14.675 6 15.829 6h.373c1.78 0 2.957 0 3.798.238"/><path fill="currentColor" fill-rule="evenodd" d="M12.25 10a.75.75 0 0 1 .75-.75h5a.75.75 0 0 1 0 1.5h-5a.75.75 0 0 1-.75-.75" clip-rule="evenodd"/></svg><span>系统构建</span></span></div></article>
-</a><a class="post-card post" href="/2025/05/29/test-blog-website/">
-<article class="md-text"><h2 class="post-title">Hexo教程</h2><div class="excerpt"><p>教程hexo命令文档 | Hexo
-12345# generate static files$ hexo generate(g)# deploy to remote sites$ hexo deploy(d)
+<div class="article-footer fs14">
+    <section id="license">
+      <div class="header"><span>License</span></div>
+      <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div>
+    </section>
+    </div>
+</article>
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"></div><div class="item" id="next"><div class="note">Older</div><a href="/2025/06/03/STM32F103-FreeRTOS-2-%E9%A9%B1%E5%8A%A8/">STM32F103+FreeRTOS(2)驱动</a></div></section></div>
 
 
 
-页面创建1$ hexo new page pagename
 
-分类和标签页面可以使用此方式创建
-分类与标签分类创建
-1$ hexo new page categories
-
-修改md文件，增加categories属性
-123title: 分类date: 2025-05-29 10:56:43type: categories
-
-文章添加categories属性
-123categories:- cate1- cate2 - cate2.1
-
-标签创建
-1$ hexo new page categories
-
-修改md文件，增加tags属性
-123title: 标签date: 2025-05-29 10:56:43type: tags
-
-文章添加tags属性
-1234tags:- tag1- tag2- [tag3, tag4]
-
-主题Stellar</p></div><div class="meta cap"><span class="cap" id="post-meta"><svg style="margin-bottom:2px" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M6.94 2c.416 0 .753.324.753.724v1.46c.668-.012 1.417-.012 2.26-.012h4.015c.842 0 1.591 0 2.259.013v-1.46c0-.4.337-.725.753-.725s.753.324.753.724V4.25c1.445.111 2.394.384 3.09 1.055c.698.67.982 1.582 1.097 2.972L22 9H2v-.724c.116-1.39.4-2.302 1.097-2.972c.697-.67 1.645-.944 3.09-1.055V2.724c0-.4.337-.724.753-.724"/><path fill="currentColor" d="M22 14v-2c0-.839-.004-2.335-.017-3H2.01c-.013.665-.01 2.161-.01 3v2c0 3.771 0 5.657 1.172 6.828C4.343 22 6.228 22 10 22h4c3.77 0 5.656 0 6.828-1.172C22 19.658 22 17.772 22 14" opacity=".5"/><path fill="currentColor" d="M18 17a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m-5 4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m-5 4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0"/></svg><time datetime="2025-05-29T02:23:01.000Z">2025-05-29</time></span><span class="cap breadcrumb"><svg style="margin-bottom:1px" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M2 6.95c0-.883 0-1.324.07-1.692A4 4 0 0 1 5.257 2.07C5.626 2 6.068 2 6.95 2c.386 0 .58 0 .766.017a4 4 0 0 1 2.18.904c.144.119.28.255.554.529L11 4c.816.816 1.224 1.224 1.712 1.495a4 4 0 0 0 .848.352C14.098 6 14.675 6 15.828 6h.374c2.632 0 3.949 0 4.804.77c.079.07.154.145.224.224c.77.855.77 2.172.77 4.804V14c0 3.771 0 5.657-1.172 6.828C19.657 22 17.771 22 14 22h-4c-3.771 0-5.657 0-6.828-1.172C2 19.657 2 17.771 2 14z" opacity=".5"/><path fill="currentColor" d="M20 6.238c0-.298-.005-.475-.025-.63a3 3 0 0 0-2.583-2.582C17.197 3 16.965 3 16.5 3H9.988c.116.104.247.234.462.45L11 4c.816.816 1.224 1.224 1.712 1.495a4 4 0 0 0 .849.352C14.098 6 14.675 6 15.829 6h.373c1.78 0 2.957 0 3.798.238"/><path fill="currentColor" fill-rule="evenodd" d="M12.25 10a.75.75 0 0 1 .75-.75h5a.75.75 0 0 1 0 1.5h-5a.75.75 0 0 1-.75-.75" clip-rule="evenodd"/></svg><span>网站教程</span></span></div></article>
-</a></div>
 
 
 <footer class="page-footer footnote"><hr><div class="text"><p>本站由 <a href="/">ZQi</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.30.0">Stellar 1.30.0</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
 </div></footer>
 <div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
-</aside><div class='float-panel blur'>
+<div class="widgets">
+
+
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">On This Page</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Make"><span class="toc-text">Make</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E8%AF%91"><span class="toc-text">编译</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95"><span class="toc-text">语法</span></a></li></ol></li></ol></div><div class="widget-footer">
+
+<a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12c0-4.714 0-7.071 1.464-8.536C4.93 2 7.286 2 12 2c4.714 0 7.071 0 8.535 1.464C22 4.93 22 7.286 22 12c0 4.714 0 7.071-1.465 8.535C19.072 22 16.714 22 12 22s-7.071 0-8.536-1.465C2 19.072 2 16.714 2 12Z"/><path stroke-linecap="round" stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/></g></svg><span>Scroll to Top</span></a></div></widget>
+</div></aside><div class='float-panel blur'>
   <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
   </button>
