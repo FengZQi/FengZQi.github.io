@@ -20,24 +20,7 @@
   <title>Make&CMake - ZQiのwebsite</title>
 
   
-  <meta name="description" content="Make编译
--o ：指定输出文件名。
-
--c：只编译，不链接。
-
--E：只预处理，不编译。
-
--S：只编译，不汇编。
-
--I ：指定头文件搜索路径。
-
--L ：指定库文件搜索路径。
-
--l ：指定链接的库文件。
-
--g：生成调试信息。
-
--O：优化代码，-O1、-O2、-O3表示不同级别的优...">
+  <meta name="description" content="Make语法12345678910111213141516171819202122232425262728293031323334353637# 规则格式目标…... : 依赖文件集合……	命令 1	命令 2	……main : main.o input.o calcu.o	gcc -o mai...">
   
   
 
@@ -69,7 +52,7 @@
 <div class="widgets">
 
 
-<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">Recent Update</span></div><div class="widget-body fs14"><a class="item title" href="/2025/06/04/Make-CMake/"><span class="title">Make&CMake</span></a><a class="item title" href="/2025/06/03/Markdown/"><span class="title">Markdown</span></a><a class="item title" href="/2025/06/03/STM32-FreeRTOS/"><span class="title">STM32+FreeRTOS(1)环境搭建</span></a><a class="item title" href="/2025/06/03/STM32F103-FreeRTOS-2-%E9%A9%B1%E5%8A%A8/"><span class="title">STM32F103+FreeRTOS(2)驱动</span></a><a class="item title" href="/2025/05/30/MQTT/"><span class="title">MQTT</span></a><a class="item title" href="/2025/05/29/link/"><span class="title">link</span></a><a class="item title" href="/2025/05/29/test-blog-website/"><span class="title">Hexo教程</span></a></div></widget>
+<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">Recent Update</span></div><div class="widget-body fs14"><a class="item title" href="/2025/06/04/Make-CMake/"><span class="title">Make&CMake</span></a><a class="item title" href="/2025/06/05/%E7%BC%96%E8%AF%91-%E9%93%BE%E6%8E%A5/"><span class="title">编译&链接</span></a><a class="item title" href="/2025/06/03/Markdown/"><span class="title">Markdown</span></a><a class="item title" href="/2025/06/03/STM32-FreeRTOS/"><span class="title">STM32+FreeRTOS(1)环境搭建</span></a><a class="item title" href="/2025/06/03/STM32F103-FreeRTOS-2-%E9%A9%B1%E5%8A%A8/"><span class="title">STM32F103+FreeRTOS(2)驱动</span></a><a class="item title" href="/2025/05/30/MQTT/"><span class="title">MQTT</span></a><a class="item title" href="/2025/05/29/link/"><span class="title">link</span></a><a class="item title" href="/2025/05/29/test-blog-website/"><span class="title">Hexo教程</span></a></div></widget>
 </div>
 
 </div></aside><div class="l_main" id="main">
@@ -82,7 +65,7 @@
   <div class="content">
     <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">Home</a>
 <span class="sep"></span><a class="cap breadcrumb" href="/">Blog</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/">构建工具</a></div>
-<div class="flex-row" id="post-meta"><span class="text created">Posted on: <time datetime="2025-06-04T13:03:56.000Z">2025-06-04</time></span><span class="sep updated"></span><span class="text updated">Updated on: <time datetime="2025-06-04T13:47:01.616Z">2025-06-04</time></span></div></div></div>
+<div class="flex-row" id="post-meta"><span class="text created">Posted on: <time datetime="2025-06-04T13:03:56.000Z">2025-06-04</time></span><span class="sep updated"></span><span class="text updated">Updated on: <time datetime="2025-06-05T14:28:21.157Z">2025-06-05</time></span></div></div></div>
     
     <div class="bottom only-title">
       
@@ -93,30 +76,7 @@
     </div>
     
   </div>
-  </div><article class="md-text content"><h1 id="Make"><a href="#Make" class="headerlink" title="Make"></a>Make</h1><h2 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h2><ul>
-<li><p>-o <file>：指定输出文件名。</p>
-</li>
-<li><p>-c：只编译，不链接。</p>
-</li>
-<li><p>-E：只预处理，不编译。</p>
-</li>
-<li><p>-S：只编译，不汇编。</p>
-</li>
-<li><p>-I <dir>：指定头文件搜索路径。</p>
-</li>
-<li><p>-L <dir>：指定库文件搜索路径。</p>
-</li>
-<li><p>-l <lib>：指定链接的库文件。</p>
-</li>
-<li><p>-g：生成调试信息。</p>
-</li>
-<li><p>-O：优化代码，-O1、-O2、-O3表示不同级别的优化</p>
-</li>
-<li><p>-shared</p>
-</li>
-</ul>
-<p><code>gcc -shared -o libmylib.so file1.o file2.o</code></p>
-<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 规则格式</span></span><br><span class="line">目标…... : 依赖文件集合……</span><br><span class="line">	命令 1</span><br><span class="line">	命令 2</span><br><span class="line">	……</span><br><span class="line">main : main.o input.o calcu.o</span><br><span class="line">	gcc -o main main.o input.o calcu.o</span><br><span class="line">	</span><br><span class="line"><span class="comment"># 赋值符号</span></span><br><span class="line"><span class="comment"># 1、&quot;=&quot; 变量的真实值取决于它所引用的变量的最后一次有效值</span></span><br><span class="line"><span class="comment"># 2、&quot;:=&quot; 不会使用后面定义的变量，只能使用前面已经定义好的</span></span><br><span class="line"><span class="comment"># 3、&quot;?=&quot; 如果变量前面赋过值，就用前值；否则用当前值</span></span><br><span class="line"><span class="comment"># 4、&quot;+=&quot; 追加</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 通配符</span></span><br><span class="line"><span class="comment"># 1、&quot;%&quot; 长度任意的非空字符串</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 伪目标 将clean声明为伪目标，防止目录中有同名目标的文件，clean后面的命令可能不能正确执行</span></span><br><span class="line">.PHONY : clean</span><br><span class="line">clean</span><br><span class="line"> rm *.o</span><br><span class="line"> rm main</span><br><span class="line"> </span><br><span class="line"> <span class="comment"># 函数</span></span><br><span class="line"> <span class="variable">$(<span class="built_in">subst</span> &lt;from&gt;,&lt;to&gt;,&lt;text&gt;)</span> <span class="comment"># 字符替换</span></span><br><span class="line"> <span class="variable">$(<span class="built_in">subst</span> zzk,ZZK,my name is zzk)</span></span><br><span class="line"> </span><br><span class="line"> <span class="variable">$(<span class="built_in">patsubst</span> &lt;pattern&gt;,&lt;replacement&gt;,&lt;text&gt;)</span> <span class="comment"># 模式字符串替换</span></span><br><span class="line"> <span class="variable">$(<span class="built_in">patsubst</span> %.c,%.o,a.c b.c c.c)</span></span><br><span class="line"> </span><br><span class="line"> <span class="variable">$(<span class="built_in">dir</span> &lt;names…&gt;)</span> <span class="comment"># 目录</span></span><br><span class="line"> </span><br><span class="line"> <span class="variable">$(<span class="built_in">notdir</span> &lt;names…&gt;)</span><span class="comment"># 去除文件中目录部分</span></span><br><span class="line"> </span><br><span class="line"> <span class="variable">$(<span class="built_in">foreach</span> &lt;var&gt;, &lt;list&gt;,&lt;text&gt;)</span><span class="comment"># 循环</span></span><br><span class="line"> </span><br><span class="line"> <span class="variable">$(<span class="built_in">wildcard</span> PATTERN…)</span><span class="comment"># 通配符</span></span><br></pre></td></tr></table></figure>
+  </div><article class="md-text content"><h1 id="Make"><a href="#Make" class="headerlink" title="Make"></a>Make</h1><h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 规则格式</span></span><br><span class="line">目标…... : 依赖文件集合……</span><br><span class="line">	命令 1</span><br><span class="line">	命令 2</span><br><span class="line">	……</span><br><span class="line">main : main.o input.o calcu.o</span><br><span class="line">	gcc -o main main.o input.o calcu.o</span><br><span class="line">	</span><br><span class="line"><span class="comment"># 赋值符号</span></span><br><span class="line"><span class="comment"># 1、&quot;=&quot; 变量的真实值取决于它所引用的变量的最后一次有效值</span></span><br><span class="line"><span class="comment"># 2、&quot;:=&quot; 不会使用后面定义的变量，只能使用前面已经定义好的</span></span><br><span class="line"><span class="comment"># 3、&quot;?=&quot; 如果变量前面赋过值，就用前值；否则用当前值</span></span><br><span class="line"><span class="comment"># 4、&quot;+=&quot; 追加</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 通配符</span></span><br><span class="line"><span class="comment"># 1、&quot;%&quot; 长度任意的非空字符串</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 伪目标 将clean声明为伪目标，防止目录中有同名目标的文件，clean后面的命令可能不能正确执行</span></span><br><span class="line">.PHONY : clean</span><br><span class="line">clean</span><br><span class="line"> rm *.o</span><br><span class="line"> rm main</span><br><span class="line"> </span><br><span class="line"> <span class="comment"># 函数</span></span><br><span class="line"> <span class="variable">$(<span class="built_in">subst</span> &lt;from&gt;,&lt;to&gt;,&lt;text&gt;)</span> <span class="comment"># 字符替换</span></span><br><span class="line"> <span class="variable">$(<span class="built_in">subst</span> zzk,ZZK,my name is zzk)</span></span><br><span class="line"> </span><br><span class="line"> <span class="variable">$(<span class="built_in">patsubst</span> &lt;pattern&gt;,&lt;replacement&gt;,&lt;text&gt;)</span> <span class="comment"># 模式字符串替换</span></span><br><span class="line"> <span class="variable">$(<span class="built_in">patsubst</span> %.c,%.o,a.c b.c c.c)</span></span><br><span class="line"> </span><br><span class="line"> <span class="variable">$(<span class="built_in">dir</span> &lt;names…&gt;)</span> <span class="comment"># 目录</span></span><br><span class="line"> </span><br><span class="line"> <span class="variable">$(<span class="built_in">notdir</span> &lt;names…&gt;)</span><span class="comment"># 去除文件中目录部分</span></span><br><span class="line"> </span><br><span class="line"> <span class="variable">$(<span class="built_in">foreach</span> &lt;var&gt;, &lt;list&gt;,&lt;text&gt;)</span><span class="comment"># 循环</span></span><br><span class="line"> </span><br><span class="line"> <span class="variable">$(<span class="built_in">wildcard</span> PATTERN…)</span><span class="comment"># 通配符</span></span><br></pre></td></tr></table></figure>
 
 <table>
 <thead>
@@ -163,7 +123,7 @@
     </section>
     </div>
 </article>
-<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"></div><div class="item" id="next"><div class="note">Older</div><a href="/2025/06/03/STM32F103-FreeRTOS-2-%E9%A9%B1%E5%8A%A8/">STM32F103+FreeRTOS(2)驱动</a></div></section></div>
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">Newer</div><a href="/2025/06/05/%E7%BC%96%E8%AF%91-%E9%93%BE%E6%8E%A5/">编译&链接</a></div><div class="item" id="next"><div class="note">Older</div><a href="/2025/06/03/STM32F103-FreeRTOS-2-%E9%A9%B1%E5%8A%A8/">STM32F103+FreeRTOS(2)驱动</a></div></section></div>
 
 
 
@@ -177,7 +137,7 @@
 
 
 
-<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">On This Page</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Make"><span class="toc-text">Make</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E8%AF%91"><span class="toc-text">编译</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95"><span class="toc-text">语法</span></a></li></ol></li></ol></div><div class="widget-footer">
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">On This Page</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Make"><span class="toc-text">Make</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95"><span class="toc-text">语法</span></a></li></ol></li></ol></div><div class="widget-footer">
 
 <a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12c0-4.714 0-7.071 1.464-8.536C4.93 2 7.286 2 12 2c4.714 0 7.071 0 8.535 1.464C22 4.93 22 7.286 22 12c0 4.714 0 7.071-1.465 8.535C19.072 22 16.714 22 12 22s-7.071 0-8.536-1.465C2 19.072 2 16.714 2 12Z"/><path stroke-linecap="round" stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/></g></svg><span>Scroll to Top</span></a></div></widget>
 </div></aside><div class='float-panel blur'>
